@@ -1,24 +1,63 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import DataEntry from './components/DataEntry/DataEntry';
+import DataViewEdit from './components/DataViewEdit/DataViewEdit';
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  NavLink,
+  Redirect,
+} from 'react-router-dom';
 import './App.css';
 
 function App() {
+  const [student, setStudent] = useState([]);
+
+  /* Handler to remove data */
+  const deleteHandler = (index) => {
+    const students = [...student];
+    students.splice(index, 1);
+    console.log(students);
+    setStudent(students);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <h1>Welcome to Student Portal</h1>
+        <h3>Add, Edit and Manage your Student Database</h3>
+        <nav>
+          <ul>
+            <li>
+              <NavLink to="/add/" exact>
+                Add Student Data
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/viewedit/" exact>
+                Edit Existing Student Data
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route
+            path="/add"
+            render={(props) => (
+              <DataEntry {...props} setStudent={setStudent} data={student} />
+            )}
+          />
+          <Route
+            path="/viewedit"
+            render={(props) => (
+              <DataViewEdit {...props} data={student} deleted={deleteHandler} />
+            )}
+          />
+          <Redirect from="/" to="/add" />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
