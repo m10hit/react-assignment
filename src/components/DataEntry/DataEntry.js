@@ -26,6 +26,7 @@ const DataEntry = ({ data, setStudent, history }) => {
     lastName: '',
     studentId: '',
     gender: 'female',
+    editing: '',
     extra: {
       sports: false,
       dance: false,
@@ -54,6 +55,18 @@ const DataEntry = ({ data, setStudent, history }) => {
     const inputData = [...data];
     inputData.push(inputs);
     setStudent(inputData);
+    setInputs({
+      firstName: '',
+      lastName: '',
+      studentId: '',
+      gender: 'female',
+      extra: {
+        sports: false,
+        dance: false,
+        singing: false,
+        debate: false,
+      },
+    });
     history.push('/viewedit');
   };
 
@@ -84,7 +97,7 @@ const DataEntry = ({ data, setStudent, history }) => {
           label="Student ID"
           placeholder="Student ID"
           name="studentId"
-          type="number"
+          type="text"
           value={inputs.studentId}
           onChange={handleInputChange}
         />

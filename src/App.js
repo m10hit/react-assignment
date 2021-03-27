@@ -12,6 +12,7 @@ import './App.css';
 
 function App() {
   const [student, setStudent] = useState([]);
+  const [editIdx, setEditIdx] = useState(-1);
 
   /* Handler to remove data */
   const deleteHandler = (index) => {
@@ -21,6 +22,29 @@ function App() {
     setStudent(students);
   };
 
+  const editHandler = (index) => {
+    setEditIdx(index);
+  };
+
+  const stopEditing = () => {
+    setEditIdx(-1);
+  };
+
+  const changeHandler = (e, name, index) => {
+    console.log(name);
+    const { value } = e.target;
+    const changed =
+      name === 'extra'
+        ? student.map((row, i) =>
+            i === index ? { ...row, ['editing']: value } : row
+          )
+        : student.map((row, i) =>
+            i === index ? { ...row, [name]: value } : row
+          );
+    console.log('<><>', changed);
+    setStudent(changed);
+  };
+  console.log('----------->>>', student);
   return (
     <BrowserRouter>
       <div className="App">
@@ -51,7 +75,15 @@ function App() {
           <Route
             path="/viewedit"
             render={(props) => (
-              <DataViewEdit {...props} data={student} deleted={deleteHandler} />
+              <DataViewEdit
+                {...props}
+                data={student}
+                deleted={deleteHandler}
+                edited={editHandler}
+                stopEditing={stopEditing}
+                changeHandler={changeHandler}
+                editIdx={editIdx}
+              />
             )}
           />
           <Redirect from="/" to="/add" />
