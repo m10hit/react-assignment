@@ -5,7 +5,6 @@ const DataViewEdit = ({
   data,
   deleted,
   edited,
-  disable,
   stopEditing,
   editIdx,
   changeHandler,

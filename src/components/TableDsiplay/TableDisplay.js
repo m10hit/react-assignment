@@ -18,8 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-// Object.keys(row.extra).filter((each) => row.extra[each]) + ', ';
-
+// To handle the rows
 const rowHandler = (
   row,
   index,
@@ -30,6 +29,7 @@ const rowHandler = (
   changeHandler,
   stopEditing
 ) => {
+  //To check if we are currently editing
   const currentlyEditing = editIdx === index;
 
   return (
@@ -98,88 +98,17 @@ export default function BasicTable({
         </TableHead>
         <TableBody>
           {/* mapping the submitted form data in the table */}
-          {fields.map(
-            (row, index) =>
-              rowHandler(
-                row,
-                index,
-                header,
-                deleteClick,
-                editClick,
-                editIdx,
-                changeHandler,
-                stopEditing
-              )
-            /* <TableRow key={row.firstName + index}>
-              <TableCell component="th" scope="row">
-                <TextField
-                  required
-                  disabled={disable}
-                  id="standard-required"
-                  name="studentId"
-                  type="number"
-                  value={row.studentId}
-                  onChange={changeHandler}
-                />
-              </TableCell>
-              <TableCell align="right">
-                <TextField
-                  required
-                  disabled={disable}
-                  inputProps={{ style: { textAlign: 'right' } }}
-                  id="standard-required"
-                  name="firstName"
-                  type="text"
-                  value={row.firstName}
-                  onChange={changeHandler}
-                />
-              </TableCell>
-              <TableCell align="right">
-                <TextField
-                  required
-                  disabled
-                  inputProps={{ style: { textAlign: 'right' } }}
-                  id="standard-required"
-                  name="firstName"
-                  type="text"
-                  value={row.lastName}
-                  onChange={changeHandler}
-                />
-              </TableCell>
-              <TableCell align="right">
-                <TextField
-                  required
-                  disabled={disable}
-                  inputProps={{ style: { textAlign: 'right' } }}
-                  id="standard-required"
-                  name="gender"
-                  type="text"
-                  value={row.gender}
-                  onChange={changeHandler}
-                />
-              </TableCell>
-              <TableCell align="right">
-                <TextField
-                  disabled={disable}
-                  inputProps={{ style: { textAlign: 'right' } }}
-                  id="standard-required"
-                  name="extra"
-                  type="text"
-                  value={
-                    Object.keys(row.extra).filter((each) => row.extra[each]) +
-                    ', '
-                  }
-                  onChange={changeHandler}
-                />
-              </TableCell>
-
-              <TableCell align="right">
-                <DeleteIcon onClick={() => deleteClick(index)} />
-              </TableCell>
-              <TableCell align="right">
-                <EditIcon onClick={() => editClick(index)} />
-              </TableCell>
-            </TableRow> */
+          {fields.map((row, index) =>
+            rowHandler(
+              row,
+              index,
+              header,
+              deleteClick,
+              editClick,
+              editIdx,
+              changeHandler,
+              stopEditing
+            )
           )}
         </TableBody>
       </Table>

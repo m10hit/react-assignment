@@ -14,21 +14,24 @@ function App() {
   const [student, setStudent] = useState([]);
   const [editIdx, setEditIdx] = useState(-1);
 
-  /* Handler to remove data */
+  // Handler to remove data
   const deleteHandler = (index) => {
     const students = [...student];
     students.splice(index, 1);
     setStudent(students);
   };
 
+  // Handler to set the index to perform data in a particular row
   const editHandler = (index) => {
     setEditIdx(index);
   };
 
+  // To stop editing when clicking on save
   const stopEditing = () => {
     setEditIdx(-1);
   };
 
+  // Handler to edit data
   const changeHandler = (e, name, index) => {
     const { value } = e.target;
     const changed = student.map((row, i) =>

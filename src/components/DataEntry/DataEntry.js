@@ -37,7 +37,7 @@ const DataEntry = ({ data, setStudent, history }) => {
 
   const classes = useStyles();
 
-  /*  To handle form inputs */
+  //  To handle form inputs
   const handleInputChange = (event) => {
     event.persist();
     let field = event.target.name;
@@ -48,7 +48,7 @@ const DataEntry = ({ data, setStudent, history }) => {
     }));
   };
 
-  /*  to handle form submissions */
+  //  to handle form submissions
   const submitHandler = (event) => {
     event.preventDefault();
     const inputData = [...data];
