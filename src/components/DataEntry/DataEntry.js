@@ -50,7 +50,6 @@ const DataEntry = ({ data, setStudent, history }) => {
 
   /*  to handle form submissions */
   const submitHandler = (event) => {
-    console.log('submitted');
     event.preventDefault();
     const inputData = [...data];
     inputData.push(inputs);

@@ -18,7 +18,6 @@ function App() {
   const deleteHandler = (index) => {
     const students = [...student];
     students.splice(index, 1);
-    console.log(students);
     setStudent(students);
   };
 
@@ -31,20 +30,12 @@ function App() {
   };
 
   const changeHandler = (e, name, index) => {
-    console.log(name);
     const { value } = e.target;
-    const changed =
-      name === 'extra'
-        ? student.map((row, i) =>
-            i === index ? { ...row, ['editing']: value } : row
-          )
-        : student.map((row, i) =>
-            i === index ? { ...row, [name]: value } : row
-          );
-    console.log('<><>', changed);
+    const changed = student.map((row, i) =>
+      i === index ? { ...row, [name]: value } : row
+    );
     setStudent(changed);
   };
-  console.log('----------->>>', student);
   return (
     <BrowserRouter>
       <div className="App">

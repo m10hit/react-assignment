@@ -10,7 +10,6 @@ const DataViewEdit = ({
   editIdx,
   changeHandler,
 }) => {
-  console.log(data);
   return (
     <div>
       <h2>Student Data</h2>

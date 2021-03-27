@@ -31,7 +31,6 @@ const rowHandler = (
   stopEditing
 ) => {
   const currentlyEditing = editIdx === index;
-  // console.log(editIdx);
 
   return (
     <TableRow key={`tr-${index}`}>
@@ -40,7 +39,6 @@ const rowHandler = (
           head.prop === 'extra'
             ? Object.keys(row[head.prop]).filter((each) => row[head.prop][each])
             : '';
-        console.log(checkHandler);
         return (
           <TableCell component="th" scope="row" key={`trc-${ind}`}>
             {head.prop === 'extra' && !currentlyEditing ? (
@@ -50,7 +48,7 @@ const rowHandler = (
             ) : head.prop === 'extra' && currentlyEditing ? (
               <TextField
                 value={checkHandler.map((each) => each)}
-                onChange={(e) => changeHandler(e, head.prop, index)}
+                onChange={(e) => changeHandler(e, 'editing', index)}
               />
             ) : currentlyEditing ? (
               <TextField
