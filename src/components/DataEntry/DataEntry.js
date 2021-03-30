@@ -41,7 +41,7 @@ const DataEntry = ({ data, setStudent, history }) => {
   const handleInputChange = (event) => {
     event.persist();
     let field = event.target.name;
-    let val = event.target.value ? event.target.value : event.target.checked;
+    let val = event.target.value;
     setInputs((inputs) => ({
       ...inputs,
       [field]: val,
